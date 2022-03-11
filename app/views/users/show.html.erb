@@ -1,0 +1,17 @@
+<h1>View User</h1>
+<div>
+    <b>Name</b>
+    <div><%= @user.name %></div>
+</div>
+<div>
+    <b>Email</b>
+    <div><%= @user.email %></div>
+</div>
+<ul class="horizontal-navigation">
+    <li><%= link_to("All Users", users_path()) %></li>
+    <li><%= link_to("Edit", edit_user_path()) %></li>
+    <%= link_to("Delete", user_path(@user), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    }) %>
+</ul>

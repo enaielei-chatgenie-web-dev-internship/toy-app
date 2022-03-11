@@ -1,0 +1,21 @@
+<%= form_with(model: user) do |form| %>
+    <div>
+        <%= form.label(:name) %>
+        <%= form.text_field(:name) %>
+        <ul class="error-list">
+            <% for error in user.errors.full_messages_for(:name) %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    </div>
+    <div>
+        <%= form.label(:email) %>
+        <%= form.email_field(:email) %>
+        <ul class="error-list">
+            <% for error in user.errors.full_messages_for(:email) %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    </div>
+    <%= form.submit() %>
+<% end %>

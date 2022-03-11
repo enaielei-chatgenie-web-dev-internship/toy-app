@@ -1,0 +1,9 @@
+<h1>Edit User</h1>
+<%= render("form", user: @user) %>
+<ul class="horizontal-navigation">
+    <li><%= link_to("All Users", users_path()) %></li>
+    <%= link_to("Delete", user_path(@user), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    }) %>
+</ul>

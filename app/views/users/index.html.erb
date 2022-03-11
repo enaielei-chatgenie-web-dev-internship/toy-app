@@ -1,0 +1,33 @@
+<h1>Users</h1>
+<table>
+    <tr>
+        <%
+        column_names = ["number", "name", "email", "operation"]
+        for col in column_names %>
+            <th><%= col.upcase() %></th>    
+        <% end %>
+    </tr>
+    <% if !@users.empty? %>
+        <% for user in @users %>
+            <tr>
+                <td><%= @users.index(user) + 1 %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <%= link_to("View", user_path(user)) %>,
+                    <%= link_to("Edit", edit_user_path(user)) %>,
+                    <%= link_to("Delete", user_path(user), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    }) %>
+                </td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr><td colspan="<%= column_names.size %>"><center>No entries to list.</center></td></tr>
+    <% end %>
+</table>
+<ul class="horizontal-navigation">
+    <li><%= link_to("Toy App", root_path()) %></li>
+    <li><%= link_to("New User", new_user_path()) %></li>
+</ul>
