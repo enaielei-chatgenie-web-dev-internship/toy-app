@@ -1,0 +1,9 @@
+<h1>Edit Micropost</h1>
+<%= render("form", post: @post) %>
+<ul class="horizontal-navigation">
+    <li><%= link_to("All Microposts", microposts_path()) %></li>
+    <%= link_to("Delete", micropost_path(@post), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    }) %>
+</ul>

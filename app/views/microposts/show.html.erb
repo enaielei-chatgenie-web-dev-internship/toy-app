@@ -1,0 +1,17 @@
+<h1>View Micropost</h1>
+<div>
+    <b>User ID</b>
+    <div><%= @post.user_id %></div>
+</div>
+<div>
+    <b>Content</b>
+    <div><%= @post.content %></div>
+</div>
+<ul class="horizontal-navigation">
+    <li><%= link_to("All Microposts", microposts_path()) %></li>
+    <li><%= link_to("Edit", edit_micropost_path()) %></li>
+    <%= link_to("Delete", micropost_path(@post), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    }) %>
+</ul>

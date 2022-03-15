@@ -1,0 +1,21 @@
+<%= form_with(model: post) do |form| %>
+    <div>
+        <%= form.label(:user_id) %>
+        <%= form.number_field(:user_id, min: 1) %>
+        <ul class="error-list">
+            <% for error in post.errors.full_messages_for(:user_id) %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    </div>
+    <div>
+        <%= form.label(:content) %>
+        <%= form.text_area(:content) %>
+        <ul class="error-list">
+            <% for error in post.errors.full_messages_for(:content) %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    </div>
+    <%= form.submit() %>
+<% end %>

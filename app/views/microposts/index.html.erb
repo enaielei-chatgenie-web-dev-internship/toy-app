@@ -1,0 +1,33 @@
+<h1>Microposts</h1>
+<table>
+    <tr>
+        <%
+        column_names = ["number", "user_id", "content", "operation"]
+        for col in column_names %>
+            <th><%= col.upcase() %></th>    
+        <% end %>
+    </tr>
+    <% if !@posts.empty? %>
+        <% for post in @posts %>
+            <tr>
+                <td><%= @posts.index(post) + 1 %></td>
+                <td><%= post.user_id %></td>
+                <td><%= truncate(post.content, length: 10) %></td>
+                <td>
+                    <%= link_to("View", micropost_path(post)) %>,
+                    <%= link_to("Edit", edit_micropost_path(post)) %>,
+                    <%= link_to("Delete", micropost_path(post), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    }) %>
+                </td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr><td colspan="<%= column_names.size %>"><center>No entries to list.</center></td></tr>
+    <% end %>
+</table>
+<ul class="horizontal-navigation">
+    <li><%= link_to("Toy App", root_path()) %></li>
+    <li><%= link_to("New Micropost", new_micropost_path()) %></li>
+</ul>
